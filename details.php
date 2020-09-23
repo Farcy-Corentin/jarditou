@@ -31,19 +31,19 @@
         echo "<div class='col-12'>";
             echo '<div class="form-group">';
                 echo '<label for="ref">Référence :</label>';
-                echo '<input type="text" class="form-control" name="ref" id="ref" placeholder='.$produit->pro_ref.'>';
+                echo '<input type="text" readOnly class="form-control" name="ref" id="ref" placeholder='.$produit->pro_ref.'>';
                 echo '<label for="categorie">Catégorie:  </label>';                 
-                echo '<input type="text" class="form-control" name="categorie" id="catégorie" placeholder='.$produit->cat_nom.'>';
+                echo '<input type="text" readOnly class="form-control" name="categorie" id="catégorie" placeholder='.$produit->cat_nom.'>';
                 echo '<label for="libelle">Libellé :  </label>';                 
-                echo '<input type="text" class="form-control" name="libelle" id="libelle" placeholder='.$produit->pro_libelle.'>';
+                echo '<input type="text" readOnly class="form-control" name="libelle" id="libelle" placeholder='.$produit->pro_libelle.'>';
                 echo '<label for="description">Description:  </label>';                 
-                echo '<input type="text" class="form-control" name="description" id="description" placeholder='.$produit->pro_description.'>';
+                echo '<input type="text" readOnly class="form-control" name="description" id="description" placeholder='.$produit->pro_description.'>';
                 echo '<label for="prix">Prix:  </label>';                 
-                echo '<input type="text" class="form-control" name="prix" id="prix" placeholder='.$produit->pro_prix.'>';
+                echo '<input type="text" readOnly class="form-control" name="prix" id="prix" placeholder='.$produit->pro_prix.'>';
                 echo '<label for="stock">Stock:  </label>';                 
-                echo '<input type="text" class="form-control" name="stock" id="stock" placeholder='.$produit->pro_stock.'>';
+                echo '<input type="text" readOnly class="form-control" name="stock" id="stock" placeholder='.$produit->pro_stock.'>';
                 echo '<label for="couleur">Couleur:  </label>';                 
-                echo '<input type="text" class="form-control" name="couleur" id="couleur" placeholder='.$produit->pro_couleur.'>';
+                echo '<input type="text" readOnly class="form-control" name="couleur" id="couleur" placeholder='.$produit->pro_couleur.'>';
                 echo '<div class="form-group d-flex flex-column">'; 
                 echo '<div>';
                 echo '<label class="form-check-label" for="bloque">Produit bloqué? :</label>';
@@ -58,41 +58,35 @@
                 echo '</div>';
                 echo '<div class="form-group">';
                 echo '<label for="date_ajout">Date d\'ajout :</label>';
-                echo '<input class="form-control" type="text" name="date_ajout" id="date_ajout" placeholder='.$produit->pro_d_ajout.'>';
+                echo '<input class="form-control" readOnly type="text" name="date_ajout" id="date_ajout" placeholder='.$produit->pro_d_ajout.'>';
                 echo '<label for="date_modif">Date de modification :</label>';
-                echo '<input class="form-control" type="text" name="date_modif" id="date_modif" placeholder='.$produit->pro_d_modif.'>';
+                echo '<input class="form-control" readOnly type="text" name="date_modif" id="date_modif" placeholder='.$produit->pro_d_modif.'>';
+                echo '</div>'; 
+                //   bouttons
+                '</div>';      
+                
+                echo 
+                '<a href="tableau.php" title="retour" role="button" class="btn btn-dark active mt-3 mb-2">Retour</a>
+                <a href="formulaire_modif.php?pro_id='.$produit->pro_id.'" role="button" class="btn btn-warning mt-3 mb-2">Modifier</a>
+                <a href=javascript:void(0) role="button" onclick="confirmation(7)" class="btn btn-danger mt-3 mb-2">Supprimer</a>
+                </form>
+                </div>';
+  ?>
 
-                 ?>
-                     
-                     <label for="code_postal">Code postal* :</label>
-                     <input class="form-control" type="text" name="code_postal" id="code_postal">
-                     <label for="adresse">Adresse :</label>
-                     <input class="form-control" type="text" name="adresse" id="adresse">
-                     <label for="ville">Ville :</label>
-                     <input class="form-control" type="text" name="ville" id="ville">
-                     <label for="email">Email* :</label>
-                     <input class="form-control" type="text" placeholder="dave.loper@afpa.fr" title="dave.loper@afpa.fr" id="email" name="email">    
-                     <h2 class="font-weight-bold">Votre demande</h2>
-                     <label for="sujet">Sujet :</label>
-                     <select class="form-control" name="Mes commandes" id="sujet"> 
-                     <option value="" selected>Veuillez choisir une option</option>
-                     <option>Mes commandes</option>
-                     <option>Question sur un produit</option>
-                     <option>Réclamation</option>
-                     <option>Autres</option>
-                     </select>
-                     <label for="votre_question">Votre question* :</label>
-                     <textarea class="form-control" name="votre_question" id="votre_question" cols="20" rows="2"></textarea>
-                     <div class="form-check">
-                     <input  class="form-check-input" type="checkbox" name="accepte" id="accepte">
-                     <label class="form-check-label" for="accepte">J'accepte le traitement informatique de ce formulaire</label>
-                     </div> 
-                 </div>      
-                    
-                     <div class="d-inline-flex"> 
-                     <a href="detail.php?id=12" title="retour" role="button" class="btn btn-dark active mt-3">Retour</a>
-        <button type="submit" class="btn btn-warning mt-3">Envoyer</button>
-        <button type="reset" title="sup" class="btn btn-danger mt-3">Effacer</button>
+<!-- script js pour la confirmation de suppression et redirection vers tableau-->
+    <script type=" text/javascript" language="javascript">
+      function confirmation(id)
+      {
+        if (confirm("Veuillez confirmer la supression de la fiche produit : barb001?")) 
+        {
+          window.location.href="public/php/delete_script.php?id=" + id;
+        }
+        else
+        {
+          window.location.href="tableau.php";
+        }
+      }
+      </script>
                      </div>
        <?php 
     include("footer.php");
