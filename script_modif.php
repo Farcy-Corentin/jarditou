@@ -12,44 +12,21 @@ $dateModif=$_POST['date_modif'];
 require "connexion_bdd.php"; // Inclusion de notre bibliothèque de fonctions
 $db = connexionBase(); // Appel de la fonction de connexion
 
-if(isset($_POST['ref']))
+if(isset($_POST['ref']) && isset($_POST['categorie']) && isset($_POST['libelle']) && isset($_POST['description'])
+ && isset($_POST['prix']) && isset($_POST['stock']) && isset($_POST['couleur']) && isset($_POST['date_ajout']) && isset($_POST['date_modif']))
 {
-    $requete = "UPDATE produits SET pro_ref='$ref'";
-}
-if(isset($_POST['categorie']))
-{
-    $requete = "UPDATE produits SET pro_cat_id='$categorie'";
-}
-if(isset($_POST['libelle']))
-{
-    $requete = "UPDATE produits SET pro_libelle='$libelle'";
-}
-if(isset($_POST['description']))
-{
-    $requete = "UPDATE produits SET pro_description='$description'";
-}
-if(isset($_POST['prix']))
-{
-    $requete = "UPDATE produits SET pro_prix='$prix'";
-}
-if(isset($_POST['stock']))
-{
-    $requete = "UPDATE produits SET pro_stock='$stock'";
-}
-if(isset($_POST['couleur']))
-{
-    $requete = "UPDATE produits SET pro_couleur='$couleur'";
-}
-// if(isset($_POST['bloque']))
-// {
-//     $requete = "UPDATE produits SET pro_bloque='$bloque'";
-// }
-if(isset($_POST['date_ajout']))
-{
-    $requete = "UPDATE produits SET pro_d_ajout='$dateAjout'";
-}
-if(isset($_POST['date_modif']))
-{
-    $requete = "UPDATE produits SET pro_d_modif='$dateModif'";
+    $requete = $db->prepare("UPDATE produits SET pro_ref= :new_ref, pro_cat_id= :new_cat, pro_libelle= :new_libelle,pro_description= :new_description,pro_prix= :new_prix,pro_stock= :new_stock,pro_couleur= :new_couleur,pro_bloque= :new_bloque,pro_d_ajout= :new_dateAjout,pro_d_modif= :new_dateModif");
+    $requete->execute(array(
+        ':new_ref'=>$ref,
+        ':new_cat'=>$categorie,
+        ':new_libelle'=>$libelle,
+        ':new_description'=>$description,
+        ':new_prix'=>$prix,
+        ':new_stock'=>$stock,
+        ':new_couleur'=>$couleur,
+        ':new_bloque'=>$bloque,
+        ':new_dateAjout'=>$dateAjout,
+        ':new_dateModif'=>$dateModif
+    ));
 }
 ?>
