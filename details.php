@@ -29,7 +29,9 @@
         <img src='images/jarditou_photos/$produit->pro_id.jpg' class='img-fluid' alt='Image responsive'>
         </div>
         <div class='col-12'>
-            <div class='form-group'>
+              <div class='form-group'>
+                <label for='ref'>ID :</label>
+                <input type='text' readOnly  class='form-control' name='pro_id' id='pro_id' placeholder='$produit->pro_id'>
                 <label for='ref'>Référence :</label>
                 <input type='text' readOnly  class='form-control' name='ref' id='ref' placeholder='$produit->pro_ref'>
                 <label for='categorie'>Catégorie:  </label>                 
@@ -67,12 +69,11 @@
                 
                  
                 <a href='tableau.php' title='retour' role='button' class='btn btn-dark active mt-3 mb-2'>Retour</a>
-                <a href='formulaire_modif.php?pro_id='.$produit->pro_id.'' role='button' class='btn btn-warning mt-3 mb-2'>Modifier</a>
+                <a href='formulaire_modif.php?pro_id=".$produit->pro_id."' role='button' class='btn btn-warning mt-3 mb-2'>Modifier</a>
                 <a href=javascript:void(0) role='button' onclick='confirmation(7)' class='btn btn-danger mt-3 mb-2'>Supprimer</a>
                 </form>
                 </div>";
   ?>
-
 <!-- script js pour la confirmation de suppression et redirection vers tableau-->
     <script type=" text/javascript" language="javascript">
       function confirmation(id)
