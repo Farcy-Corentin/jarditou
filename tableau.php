@@ -43,7 +43,7 @@ echo '<div class="table-responsive">
         while ($row = $result->fetch(PDO::FETCH_OBJ))
         {    
             echo '<tr>';   
-            echo     '<td class="table-warning align-middle"><img src="images/jarditou_photos/'.$row->pro_id.'.jpg" class="img-fluid" alt=""></td>';
+            echo     '<td class="table-warning align-middle"><img src="images/jarditou_photos/'.$row->pro_id.'.png" class="img-fluid" alt=""></td>';
             echo    "<td class='align-middle'>$row->pro_id</td>";
             echo    "<td class='align-middle'>$row->pro_ref</td>";
             echo  '<td class="table-warning align-middle"><a href="details.php?pro_id='.$row->pro_id.'"title='.$row->pro_libelle.'><u class="text-danger font-weight-bold text-uppercase">'.$row->pro_libelle.'</u></a></td>';
