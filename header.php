@@ -37,7 +37,7 @@
                             <a class="nav-link" href="contact.php">Contact</a>
                         </li>                    
                         <li class="nav-item">
-                            <a class="nav-link" href="ajoutprod.php">Ajouter un produit</a>
+                            <a class="nav-link" href="produits_ajout.php">Ajouter un produit</a>
                         </li> 
                     </ul>
                     <form class="form-inline my-2 my-lg-0">
